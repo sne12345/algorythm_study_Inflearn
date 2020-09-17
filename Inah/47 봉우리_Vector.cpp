@@ -1,4 +1,4 @@
-//ÁÂÇ¥¸¦ ¹è¿­ »ç¿ëÀ¸·Î È¿À² up 
+//ì¢Œí‘œë¥¼ ë°°ì—´ ì‚¬ìš©ìœ¼ë¡œ íš¨ìœ¨ up 
 
 #include <iostream>
 #include <vector>
@@ -8,38 +8,27 @@ using namespace std;
 int n;
 int dx[4] = {-1, 0, 1, 0};
 int dy[4] = {0, 1, 0, -1};
-vector<int> v[100]; //º¤ÅÍ °´Ã¼ 100°³ ¸¸µë 
 
-int isEdge(int x, int y)
-{
-	return x == 0 || x == n - 1 || y == 0 || y == n - 1 ? 1 : 0;
-}
-int isPeak(int x, int y)
+int isPeak(int x, int y, vector<vector<int> > v)
 {
 	for(int i = 0; i < 4; i++) {
-		if(v[x][y] < v[x + dx[i]][y + dy[i]]) {
+		if(v[x][y] <= v[x + dx[i]][y + dy[i]]) {
 			return 0;
 		}
 	}
 	return 1;
-}
-void checkPeak()
-{
-	for(int i = 1; i < n - 1; i++) {
-		for(int j = 1; j < n - 1; j++) {
-			printf("%d ", isPeak(i, j));
-		}
-		printf("\n");
-	}
+//	return v[x][y] > v[x - 1][y] && v[x][y] > v[x][y - 1] && 
+//		   v[x][y] > v[x][y + 1] && v[x][y] > v[x + 1][y] 
+//		   ? 1 : 0;
 }
 
-int countPeak()
+int countPeak(vector<vector<int> > v)
 {
 	int cnt = 0;
 	
-	for(int i = 1; i < n - 1; i++) {
-		for(int j = 1; j < n - 1; j++) {
-			if(isPeak(i, j)) cnt++;
+	for(int i = 1; i <= n; i++) {
+		for(int j = 1; j <= n; j++) {
+			if(isPeak(i, j, v)) cnt++;
 		}
 	}
 	
@@ -49,18 +38,14 @@ int countPeak()
 int main()
 {
 	scanf("%d", &n);
-	int num;
 	
-	n+=2;
-	for(int i = 0; i < n; i++) {
-		for(int j = 0; j < n; j++) {
-			if(isEdge(i, j)) num = 0;
-			else scanf("%d", &num);
-			v[i].push_back(num);
+	vector<vector<int> > v(n + 2, vector<int>(n + 2, 0));
+	
+	for(int i = 1; i <= n; i++) {
+		for(int j = 1; j <= n; j++) {
+			scanf("%d", &v[i][j]);
 		}
 	}
 	
-//   checkPeak();
-	
-	printf("%d", countPeak());
+	printf("%d", countPeak(v));
 }
