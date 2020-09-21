@@ -7,17 +7,18 @@ using namespace std;
 int n, a[11], total=0;
 bool flag= false;
 
-void DFS(int L, int sum){ // ³»°¡ ¸¸µå´Â ºÎºĞ ÁıÇÕÀÇ ÇÕ
-	if(flag==true) return; // ÀüÃ¼ DFS Á¾·á Á¶ 
+void DFS(int L, int sum){ // ë‚´ê°€ ë§Œë“œëŠ” ë¶€ë¶„ ì§‘í•©ì˜ í•©
+	if(sum>(total/2)) return; // ë°±íŠ¸ë˜í‚¹ ì¬ì§ˆ 
+	if(flag==true) return; // ì „ì²´ DFS ì¢…ë£Œ ì¡° 
 	if(L==n+1){
-		// ºñ±³ÇÏ±â
+		// ë¹„êµí•˜ê¸°
 		if (sum==(total-sum)){
 			flag=true;
 		}
 	} 
 	else{
-		DFS(L+1, sum+a[L]); //»ç¿ëÇÑ´Ù 
-		DFS(L+1, sum); // »ç¿ëÇÏÁö ¾Ê´Â´Ù 
+		DFS(L+1, sum+a[L]); //ì‚¬ìš©í•œë‹¤ 
+		DFS(L+1, sum); // ì‚¬ìš©í•˜ì§€ ì•ŠëŠ”ë‹¤ 
 	}
 } 
 
