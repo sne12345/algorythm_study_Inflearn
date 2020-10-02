@@ -37,7 +37,7 @@ int main(void){
 	int m, i, c, a, b;
 	scanf("%d %d", &n, &m);
 	
-	// ÀÎÁ¢Çà·Ä ¸ðµÎ ÀÔ·Â  
+	// ë°©í–¥ ê°€ì¤‘ì¹˜ ê·¸ëž˜í”„  
 	for(i=1; i<=m; i++){
 		scanf("%d %d %d", &a, &b, &c);
 		map[a][b]=c;
