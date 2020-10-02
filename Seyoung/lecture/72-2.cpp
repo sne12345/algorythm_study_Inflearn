@@ -13,7 +13,7 @@ int main(void)
 	scanf("%d %d", &n, &k);
 	
 	for(int i=1; i<=n; i++){
-		Q.push(i); //ÀÏ´Ü ´Ù ³Ö°í ½ÃÀÛ 
+		Q.push(i); //ì¼ë‹¨ ë‹¤ ë„£ê³  ì‹œìž‘, 1ë¶€í„° ë„£ì–´ì•¼ í•¨!!
 	}
 	
 	int next = 1; 
