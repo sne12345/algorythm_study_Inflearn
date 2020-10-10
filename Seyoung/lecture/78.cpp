@@ -15,7 +15,7 @@ struct Edge{
 		val=c;
 	}
 	bool operator<(const Edge &b)const{
-		return val<b.val;
+		return val<b.val; // 정렬의 기준, 오름차순  
 	}
 };
 
@@ -31,7 +31,7 @@ void Union(int a, int b){
 }
 
 int main(){
-	//freopen("input.txt", "rt", stdin);
+	freopen("input.txt", "rt", stdin);
 	vector<Edge> Ed;
 	int i, n, m, a, b, c, cnt=0, res=0;
 	scanf("%d %d", &n, &m);
@@ -42,13 +42,13 @@ int main(){
 		scanf("%d %d %d", &a, &b, &c);
 		Ed.push_back(Edge(a, b, c));	
 	}
-	sort(Ed.begin(), Ed.end());
+	sort(Ed.begin(), Ed.end()); // 오름차순 정렬, 가중치 값으로  
 	for(i=0; i<m; i++){
 		int fa=Find(Ed[i].s);
 		int fb=Find(Ed[i].e);
-		if(fa!=fb){
+		if(fa!=fb){ // 다른 집합일 경우 
 			res+=Ed[i].val;
-			Union(Ed[i].s, Ed[i].e);
+			Union(Ed[i].s, Ed[i].e); // union  
 		}
 	}
 	printf("%d\n", res);
